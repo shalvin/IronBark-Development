@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Application Name -->
+    <string name="app_name">Student Sale App</string>
+    
+    <!-- Options Menu Bar -->
+    <string name="buy_option_text">Buy</string>
+    <string name="sell_option_text">Sell</string>
+    <string name="search_option_text">Search</string>
+    
+	<!-- Buy Activity -->
+    <string name="emptyList">No Data</string>
+    <string name="name">Buy List View</string>
+    <string name="image">Image</string>
+    
+	<!-- Single Buy Item Activity -->
+    <string name="title_activity_single_buy_list_item">Student Sale App</string>
+    <string name="notsetText">Text Not Set</string>
+    <string name="imageViewDescription">Image View</string>
+    
+    <!-- Sell Activity -->
+    <string name="title_sell_activity">Sell an Item</string>
+    <string name="title">Title</string>
+    <string name="titleHint">Add a title for your item</string>
+    <string name="description">Description</string>
+    <string name="descriptionHint">Add a description for your item</string>
+    <string name="photos">Photos</string>
+    <string name="photoViewDescription">Images for the item</string>
+    <string name="takePhotoButtonDescription">Take Image</string>
+    <string name="photoButton">Take Photo</string>
+	<string name="phoneNumber">Phone Number</string>
+    <string name="location">Location</string>
+    <string name="price">Price</string>
+    <string name="button_sell_item">Sell</string>
+
+</resources>
