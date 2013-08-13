@@ -276,10 +276,8 @@ public class SellActivity extends Activity {
 //		saleItem.setImages(mImageBitmaps);
 		Log.i(TAG, "Sell Item: " + titleText + ", " + descriptionText + ", " + phoneNumberText + ", " + locationText + ", " + priceText);
 		 	
-//		// For testing the following lines have been extracted from the above comment
-//		titleTextField = (EditText) findViewById(R.id.titleTextField);  
-//		titleText = titleTextField.getText().toString();
-//		Toast.makeText(this, "Listed Item '" + titleText + "'", Toast.LENGTH_SHORT).show();
+		// For testing the following lines have been extracted from the above comment
+		Toast.makeText(this, "Listed Item '" + titleText + "'", Toast.LENGTH_SHORT).show();
 		
         // Add the item to the backend model and finish
 		ParseModel model = new ParseModel(getApplicationContext());
