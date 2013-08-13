@@ -26,8 +26,8 @@ import com.parse.ParseException;
  */
 public class ParseModel implements BackendModel {
 	
-	private static final String applicationID = "PCFy8hpE0WMX0lPv7RyeP2TfOOGf2c8nhT5xOmhX";
-	private static final String clientKey = "mjCVdqkdVk98ZuKtU1aeAHMQF5u3l6IMnm1hhtY7";
+	private static final String applicationID = "JHwOtzWPwbcx3z9PaSVngpUXMkKZs1LgSPW5mii2";
+	private static final String clientKey = "DHgBqJxm534gfMSAiX8wkWpVFtCN1zYjsmWqgzhW";
 	
 	/**
 	 * List of objects retrieved from Parse.
