@@ -5,15 +5,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.app.Activity;
+import android.provider.MediaStore;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
@@ -23,18 +33,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.os.Build;
-import android.provider.MediaStore;
+
 import com.studentsaleapp.R;
-//import com.studentsaleapp.backend.BackendModel;
+import com.studentsaleapp.backend.ParseModel;
+import com.studentsaleapp.backend.SaleItem;
 
 
 public class SellActivity extends Activity {
@@ -247,8 +249,7 @@ public class SellActivity extends Activity {
 	}
 	
 	public void buttonSellItem(View button) {
-		/*
-		TODO: Uncomment the following when using pushing data to the backend model
+//		TODO: Uncomment the following when using pushing data to the backend model
 		
 		// Get the field handles
 		final EditText titleTextField = (EditText) findViewById(R.id.titleTextField);  
@@ -269,20 +270,20 @@ public class SellActivity extends Activity {
 		saleItem.setTitle(titleText);
 		saleItem.setDescription(descriptionText);
 		saleItem.setContact(phoneNumberText);
-		saleItem.setLocation(locationText);
+		saleItem.setLocation(0, 0);
 		saleItem.setPrice(priceText);
 		saleItem.setUserID(phoneNumberText);
-		saleItem.setImages(mImageBitmaps);
+//		saleItem.setImages(mImageBitmaps);
 		Log.i(TAG, "Sell Item: " + titleText + ", " + descriptionText + ", " + phoneNumberText + ", " + locationText + ", " + priceText);
-		 */
+		 	
+//		// For testing the following lines have been extracted from the above comment
+//		titleTextField = (EditText) findViewById(R.id.titleTextField);  
+//		titleText = titleTextField.getText().toString();
+//		Toast.makeText(this, "Listed Item '" + titleText + "'", Toast.LENGTH_SHORT).show();
 		
-		// For testing the following lines have been extracted from the above comment
-		final EditText titleTextField = (EditText) findViewById(R.id.titleTextField);  
-		String titleText = titleTextField.getText().toString();
-		Toast.makeText(this, "Listed Item '" + titleText + "'", Toast.LENGTH_SHORT).show();
-		
-		// Add the item to the backend model and finish
-		//model.addItem(saleItem);
+        // Add the item to the backend model and finish
+		ParseModel model = new ParseModel(getApplicationContext());
+		model.addItem(saleItem);
 		finish();
 	}
 	
