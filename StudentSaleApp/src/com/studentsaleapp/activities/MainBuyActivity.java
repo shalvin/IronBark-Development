@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,8 +18,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.studentsaleapp.R;
-//import com.studentsaleapp.backend.BackendModel;
+import com.studentsaleapp.backend.BackendModel;
+import com.studentsaleapp.backend.SaleItem;
 
 
 @SuppressLint("NewApi")
@@ -103,7 +107,7 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
 
 	/** The backend model */
 	//TODO: Static data used instead of the backend model
-	//private BackendModel model;
+	private BackendModel model;
 
 	@SuppressLint("NewApi")
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -115,15 +119,18 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
 		setContentView(R.layout.buy_layout);
 		
 		// Get the backend model
-		//MainApplication appState = (MainApplication)getApplicationContext();
-		//model = appState.getBackendModel();
+		MainApplication appState = (MainApplication)getApplicationContext();
+		model = appState.getBackendModel();
 
 		// Populate the row items
+        Toast.makeText(this, "Getting stuff from server.", Toast.LENGTH_SHORT).show();
+        ArrayList<SaleItem> saleItems = model.getItemList();
+        SaleItem item;
 		rowItems = new ArrayList<BuyRowItem>();
-		for (int i = 0; i < titles.length; i++) {
-			BuyRowItem item = new BuyRowItem(images[i], titles[i], descriptions[i],
-					price[i], contact[i], location[i]);
-			rowItems.add(item);
+		for (int i = 0; i < saleItems.size(); i++) {
+            item = saleItems.get(i);
+			rowItems.add(new BuyRowItem(images[0], item.getTitle(), item.getDescription(),
+                    Double.toString(item.getPrice()), item.getContact(), location[0]));
 		}
 
 		// Setup the adapter
