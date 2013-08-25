@@ -70,7 +70,16 @@
       <file leaf-file-name="SellActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StudentSaleApp/src/com/studentsaleapp/activities/SellActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="269" column="55" selection-start="9129" selection-end="9129" vertical-scroll-proportion="0.22370617" vertical-offset="3361" max-vertical-offset="5640">
+            <state line="301" column="4" selection-start="10386" selection-end="10386" vertical-scroll-proportion="1.2771286" vertical-offset="3210" max-vertical-offset="5850">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SaleItem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StudentSaleApp/src/com/studentsaleapp/backend/SaleItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="102" column="33" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3225">
               <folding />
             </state>
           </provider>
@@ -86,6 +95,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/StudentSaleApp/src/com/studentsaleapp/backend/SaleItem.java" />
         <option value="$PROJECT_DIR$/StudentSaleApp/src/com/studentsaleapp/activities/SellActivity.java" />
       </list>
     </option>
@@ -417,14 +427,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/StudentSaleApp/src/com/studentsaleapp/backend/SaleItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="94" selection-end="94" vertical-scroll-proportion="0.09803922" vertical-offset="0" max-vertical-offset="2775">
+        <state line="102" column="33" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3225">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/StudentSaleApp/src/com/studentsaleapp/activities/SellActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="269" column="55" selection-start="9129" selection-end="9129" vertical-scroll-proportion="0.22370617" vertical-offset="3361" max-vertical-offset="5640">
+        <state line="301" column="4" selection-start="10386" selection-end="10386" vertical-scroll-proportion="1.2771286" vertical-offset="3210" max-vertical-offset="5850">
           <folding />
         </state>
       </provider>

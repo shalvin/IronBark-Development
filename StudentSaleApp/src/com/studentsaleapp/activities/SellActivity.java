@@ -272,8 +272,11 @@ public class SellActivity extends Activity {
 		saleItem.setDescription(descriptionText);
 		saleItem.setContact(phoneNumberText);
         saleItem.setLocation(lastLocation.getLatitude(), lastLocation.getLongitude());
+        saleItem.setLocationString(locationText);
 		saleItem.setPrice(priceText);
-		saleItem.setUserID(phoneNumberText);
+        saleItem.setPhoneNumber(phoneNumberText);
+		saleItem.setUserID(getDeviceID());
+
 //		saleItem.setImages(mImageBitmaps);
 		Log.i(TAG, "Sell Item: " + titleText + ", " + descriptionText + ", " + phoneNumberText + ", " + locationText + ", " + priceText);
 		 	
@@ -304,6 +307,17 @@ public class SellActivity extends Activity {
 		final EditText phoneNumberTextField = (EditText) findViewById(R.id.phoneNumberTextField);  
 		phoneNumberTextField.setText(getUserPhoneNumber());		
 	}
+
+    /**
+     * Get and return the unique device ID
+     * @return - the device ID as a String
+     */
+    private String getDeviceID() {
+        String deviceID;
+        TelephonyManager teleManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        deviceID = teleManager.getDeviceId();
+        return deviceID;
+    }
 
 	/**
 	 * Setup the network provider location listener and display fields

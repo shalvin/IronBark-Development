@@ -9,7 +9,9 @@ public class SaleItem {
 	private String contact = "";
 	private double latitude = 0;
 	private double longitude = 0;
+    private String location = "";
 	private double price = 0;
+    private String phoneNumber = "";
 	private String userID = "";
 	
 	private String itemID = null;
@@ -87,6 +89,20 @@ public class SaleItem {
 		this.longitude = longitude;
 	}
 
+    /**
+     * @return the item's location
+     */
+    public String getLocation() {
+        return location;
+    }
+
+    /**
+     * @param location set the item's location to location
+     */
+    public void setLocationString(String location) {
+        this.location = location;
+    }
+
 	/**
 	 * @return the item's price
 	 */
@@ -100,6 +116,20 @@ public class SaleItem {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
+    /**
+     * @return the item's phone number
+     */
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    /**
+     * @param phoneNumber set the item's phone number to phoneNumber
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 	
 	/**
 	 * @return the userID
