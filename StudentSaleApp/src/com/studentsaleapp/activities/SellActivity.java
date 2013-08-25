@@ -267,10 +267,11 @@ public class SellActivity extends Activity {
 
 		// Create the sale item and add the fields
 		SaleItem saleItem = new SaleItem();
+        Location lastLocation = locationManager.getLastKnownLocation(Context.TELEPHONY_SERVICE);
 		saleItem.setTitle(titleText);
 		saleItem.setDescription(descriptionText);
 		saleItem.setContact(phoneNumberText);
-		saleItem.setLocation(0, 0);
+        saleItem.setLocation(lastLocation.getLatitude(), lastLocation.getLongitude());
 		saleItem.setPrice(priceText);
 		saleItem.setUserID(phoneNumberText);
 //		saleItem.setImages(mImageBitmaps);
