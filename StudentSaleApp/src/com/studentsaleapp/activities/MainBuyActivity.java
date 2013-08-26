@@ -125,9 +125,14 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
         // Temporary counter to go through static data as images & locations not yet in database.
         int temp_counter = 0;
 		for (SaleItem item : temp_rowItems) {
-            rowItems.add(new BuyRowItem(images[temp_counter], item.getTitle(),
-                    item.getDescription(), Double.toString(item.getPrice()), item.getContact(),
-                    location[temp_counter]));
+            rowItems.add(new BuyRowItem(
+                    images[temp_counter],
+                    item.getTitle(),
+                    item.getDescription(),
+                    formatPrice(item.getPrice()),
+                    item.getContact(),
+                    location[temp_counter]
+            ));
             temp_counter++;
         }
 
@@ -182,4 +187,14 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
 		}
 		return (super.onOptionsItemSelected(item));
 	}
+
+    private String formatPrice(double price) {
+        StringBuffer formattedPrice = new StringBuffer(Double.toString(price));
+        formattedPrice.insert(0, '$');
+        if (formattedPrice.indexOf(".") < 0) {
+            formattedPrice.append(".00");
+        }
+
+        return formattedPrice.toString();
+    }
 }

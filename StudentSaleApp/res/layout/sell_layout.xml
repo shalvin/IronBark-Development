@@ -145,7 +145,8 @@
             android:layout_height="wrap_content"
             android:onClick="buttonSellItem"
             android:text="@string/button_sell_item"
-            android:textColor="#ffffff" >
+            android:textColor="#ffffff"
+            android:background="#669900">
         </Button>
     </LinearLayout>
 
