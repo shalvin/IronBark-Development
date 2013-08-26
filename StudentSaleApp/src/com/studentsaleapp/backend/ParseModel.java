@@ -201,7 +201,7 @@ public class ParseModel implements BackendModel {
 		s.setTitle(p.getString("title"));
 		s.setDescription(p.getString("description"));
 		s.setContact(p.getString("contact"));
-		ParseGeoPoint gp = p.getParseGeoPoint("location");
+		ParseGeoPoint gp = p.getParseGeoPoint("coordinates");
 		s.setLocation(gp.getLatitude(), gp.getLongitude());
 		s.setPrice(p.getDouble("price"));
 		s.setUserID(p.getString("userid"));

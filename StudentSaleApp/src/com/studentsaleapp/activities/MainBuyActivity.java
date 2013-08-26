@@ -18,7 +18,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.studentsaleapp.R;
-//import com.studentsaleapp.backend.BackendModel;
+import com.studentsaleapp.backend.BackendModel;
+import com.studentsaleapp.backend.SaleItem;
 
 
 @SuppressLint("NewApi")
@@ -103,7 +104,7 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
 
 	/** The backend model */
 	//TODO: Static data used instead of the backend model
-	//private BackendModel model;
+	private BackendModel model;
 
 	@SuppressLint("NewApi")
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -115,16 +116,20 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
 		setContentView(R.layout.buy_layout);
 		
 		// Get the backend model
-		//MainApplication appState = (MainApplication)getApplicationContext();
-		//model = appState.getBackendModel();
+		MainApplication appState = (MainApplication)getApplicationContext();
+		model = appState.getBackendModel();
 
 		// Populate the row items
 		rowItems = new ArrayList<BuyRowItem>();
-		for (int i = 0; i < titles.length; i++) {
-			BuyRowItem item = new BuyRowItem(images[i], titles[i], descriptions[i],
-					price[i], contact[i], location[i]);
-			rowItems.add(item);
-		}
+        ArrayList<SaleItem> temp_rowItems = model.getItemList();
+        // Temporary counter to go through static data as images & locations not yet in database.
+        int temp_counter = 0;
+		for (SaleItem item : temp_rowItems) {
+            rowItems.add(new BuyRowItem(images[temp_counter], item.getTitle(),
+                    item.getDescription(), Double.toString(item.getPrice()), item.getContact(),
+                    location[temp_counter]));
+            temp_counter++;
+        }
 
 		// Setup the adapter
 		adapterListView = (ListView) findViewById(R.id.list);
