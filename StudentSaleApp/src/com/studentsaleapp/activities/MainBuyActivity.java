@@ -29,7 +29,7 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
 	 * for use when the backend is disabled
 	 */
 	public static final String[] titles = new String[] { 
-		"Microwave", 
+		"Microwave Oven",
 		"Toaster", 
 		"Desk Lamp", 
 		"Desk", 
