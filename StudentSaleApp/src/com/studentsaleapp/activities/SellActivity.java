@@ -252,8 +252,6 @@ public class SellActivity extends Activity {
 	}
 	
 	public void buttonSellItem(View button) {
-//		TODO: Uncomment the following when using pushing data to the backend model
-		
 		// Get the field handles
 		final EditText titleTextField = (EditText) findViewById(R.id.titleTextField);  
 		final EditText descriptionTextField = (EditText) findViewById(R.id.descriptionTextField);  
@@ -295,10 +293,9 @@ public class SellActivity extends Activity {
         saleItem.setLocation(lastLocation.getLatitude(), lastLocation.getLongitude());
         saleItem.setLocationString(locationText);
 		saleItem.setPrice(Double.parseDouble(priceText));
-        saleItem.setPhoneNumber(phoneNumberText);
 		saleItem.setUserID(getDeviceID());
-
-        //saleItem.setImages(mImageBitmaps);
+		saleItem.setImages(mImageBitmaps);
+		
 		Log.i(TAG, "Sell Item: " + titleText + ", " + descriptionText + ", " + phoneNumberText + ", " + locationText + ", " + priceText);
 		 	
 		// For testing the following lines have been extracted from the above comment
@@ -393,7 +390,7 @@ public class SellActivity extends Activity {
 			Log.i(TAG, "setLocation Iteration: " + latitude + ", " + longitude);
 		} while (addresses.size() == 0);
 		
-		// Create the address string containing no null Strings
+		/*// Create the address string containing no null Strings
 		int lineCounter = 0;
 		String locationString = "";
 		String addressLine;
@@ -410,7 +407,11 @@ public class SellActivity extends Activity {
 			}
 			locationString += addressLine + ", ";
 		}
-		
+		*/
+
+        Address address = addresses.get(0);
+        String locationString = address.getLocality() + ", " + address.getAdminArea();
+
 		// Set the location in the text field
 		Log.i(TAG, "setLocation Address: " + locationString);
 		final EditText locationTextField = (EditText) findViewById(R.id.locationTextField);

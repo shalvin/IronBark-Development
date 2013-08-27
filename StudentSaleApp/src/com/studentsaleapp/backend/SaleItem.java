@@ -1,5 +1,8 @@
 package com.studentsaleapp.backend;
 
+import java.util.ArrayList;
+
+import android.graphics.Bitmap;
 import android.provider.MediaStore.Images;
 
 public class SaleItem {
@@ -11,10 +14,10 @@ public class SaleItem {
 	private double longitude = 0;
     private String location = "";
 	private double price = 0;
-    private String phoneNumber = "";
 	private String userID = "";
 	
 	private String itemID = null;
+	private ArrayList<Bitmap> mImageBitmaps = null;
 	private Images thumbnail;
 
 	/**
@@ -64,6 +67,20 @@ public class SaleItem {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
+	
+	/**
+	 * @return the item's images
+	 */
+	public ArrayList<Bitmap> getImages() {
+		return this.mImageBitmaps;
+	}
+	
+	/**
+	 * @param set the item's images
+	 */
+	public void setImages(ArrayList<Bitmap> mImageBitmaps) {
+		this.mImageBitmaps = mImageBitmaps;
+	}
 
 	/**
 	 * @return the longitude
@@ -92,7 +109,7 @@ public class SaleItem {
     /**
      * @return the item's location
      */
-    public String getLocation() {
+    public String getLocationString() {
         return location;
     }
 
@@ -116,20 +133,6 @@ public class SaleItem {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-    /**
-     * @return the item's phone number
-     */
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    /**
-     * @param phoneNumber set the item's phone number to phoneNumber
-     */
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 	
 	/**
 	 * @return the userID

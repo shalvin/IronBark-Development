@@ -203,6 +203,7 @@ public class ParseModel implements BackendModel {
 		s.setContact(p.getString("contact"));
 		ParseGeoPoint gp = p.getParseGeoPoint("coordinates");
 		s.setLocation(gp.getLatitude(), gp.getLongitude());
+        s.setLocationString(p.getString("location"));
 		s.setPrice(p.getDouble("price"));
 		s.setUserID(p.getString("userid"));
 		s.setItemID(p.getObjectId());
@@ -222,8 +223,36 @@ public class ParseModel implements BackendModel {
 		o.put("contact", s.getContact());
 		o.put("price", s.getPrice());
 		o.put("coordinates", new ParseGeoPoint(s.getLatitude(), s.getLongitude()));
+        o.put("location", s.getLocationString());
 		o.put("userid", s.getUserID());
 		s.getThumbnail();
+		
+		ParseFile imageOne;
+		ParseFile imageTwo;
+		ParseFile imageThree;
+		switch(s.getImages().size()) {
+			case 1:
+				imageOne = bitmapToParseFile(s.getImages().get(0));
+				o.put("imageOne", imageOne);
+				break;
+			case 2:
+				imageOne = bitmapToParseFile(s.getImages().get(0));
+				o.put("imageOne", imageOne);
+				
+				imageTwo = bitmapToParseFile(s.getImages().get(1));
+				o.put("imageTwo", imageTwo);
+				break;
+			case 3:
+				imageOne = bitmapToParseFile(s.getImages().get(0));
+				o.put("imageOne", imageOne);
+				
+				imageTwo = bitmapToParseFile(s.getImages().get(1));
+				o.put("imageTwo", imageTwo);
+				
+				imageThree = bitmapToParseFile(s.getImages().get(2));
+				o.put("imageThree", imageThree);
+				break;
+		}
 		return o;
 	}
 
