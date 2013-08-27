@@ -203,6 +203,7 @@ public class ParseModel implements BackendModel {
 		s.setContact(p.getString("contact"));
 		ParseGeoPoint gp = p.getParseGeoPoint("coordinates");
 		s.setLocation(gp.getLatitude(), gp.getLongitude());
+        s.setLocationString(p.getString("location"));
 		s.setPrice(p.getDouble("price"));
 		s.setUserID(p.getString("userid"));
 		s.setItemID(p.getObjectId());
@@ -222,6 +223,7 @@ public class ParseModel implements BackendModel {
 		o.put("contact", s.getContact());
 		o.put("price", s.getPrice());
 		o.put("coordinates", new ParseGeoPoint(s.getLatitude(), s.getLongitude()));
+        o.put("location", s.getLocationString());
 		o.put("userid", s.getUserID());
 		s.getThumbnail();
 		

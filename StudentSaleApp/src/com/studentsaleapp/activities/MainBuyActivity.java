@@ -131,7 +131,7 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
                     item.getDescription(),
                     formatPrice(item.getPrice()),
                     item.getContact(),
-                    location[temp_counter]
+                    item.getLocationString()
             ));
             temp_counter++;
         }
