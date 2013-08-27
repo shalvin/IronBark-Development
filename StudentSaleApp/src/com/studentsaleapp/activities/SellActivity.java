@@ -249,8 +249,6 @@ public class SellActivity extends Activity {
 	}
 	
 	public void buttonSellItem(View button) {
-//		TODO: Uncomment the following when using pushing data to the backend model
-		
 		// Get the field handles
 		final EditText titleTextField = (EditText) findViewById(R.id.titleTextField);  
 		final EditText descriptionTextField = (EditText) findViewById(R.id.descriptionTextField);  
@@ -276,8 +274,8 @@ public class SellActivity extends Activity {
 		saleItem.setPrice(priceText);
         saleItem.setPhoneNumber(phoneNumberText);
 		saleItem.setUserID(getDeviceID());
-
-//		saleItem.setImages(mImageBitmaps);
+		saleItem.setImages(mImageBitmaps);
+		
 		Log.i(TAG, "Sell Item: " + titleText + ", " + descriptionText + ", " + phoneNumberText + ", " + locationText + ", " + priceText);
 		 	
 		// For testing the following lines have been extracted from the above comment

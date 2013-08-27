@@ -1,5 +1,8 @@
 package com.studentsaleapp.backend;
 
+import java.util.ArrayList;
+
+import android.graphics.Bitmap;
 import android.provider.MediaStore.Images;
 
 public class SaleItem {
@@ -15,6 +18,7 @@ public class SaleItem {
 	private String userID = "";
 	
 	private String itemID = null;
+	private ArrayList<Bitmap> mImageBitmaps = null;
 	private Images thumbnail;
 
 	/**
@@ -63,6 +67,20 @@ public class SaleItem {
 	 */
 	public void setContact(String contact) {
 		this.contact = contact;
+	}
+	
+	/**
+	 * @return the item's images
+	 */
+	public ArrayList<Bitmap> getImages() {
+		return this.mImageBitmaps;
+	}
+	
+	/**
+	 * @param set the item's images
+	 */
+	public void setImages(ArrayList<Bitmap> mImageBitmaps) {
+		this.mImageBitmaps = mImageBitmaps;
 	}
 
 	/**

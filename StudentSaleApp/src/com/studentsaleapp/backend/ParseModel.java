@@ -224,6 +224,33 @@ public class ParseModel implements BackendModel {
 		o.put("coordinates", new ParseGeoPoint(s.getLatitude(), s.getLongitude()));
 		o.put("userid", s.getUserID());
 		s.getThumbnail();
+		
+		ParseFile imageOne;
+		ParseFile imageTwo;
+		ParseFile imageThree;
+		switch(s.getImages().size()) {
+			case 1:
+				imageOne = bitmapToParseFile(s.getImages().get(0));
+				o.put("imageOne", imageOne);
+				break;
+			case 2:
+				imageOne = bitmapToParseFile(s.getImages().get(0));
+				o.put("imageOne", imageOne);
+				
+				imageTwo = bitmapToParseFile(s.getImages().get(1));
+				o.put("imageTwo", imageTwo);
+				break;
+			case 3:
+				imageOne = bitmapToParseFile(s.getImages().get(0));
+				o.put("imageOne", imageOne);
+				
+				imageTwo = bitmapToParseFile(s.getImages().get(1));
+				o.put("imageTwo", imageTwo);
+				
+				imageThree = bitmapToParseFile(s.getImages().get(2));
+				o.put("imageThree", imageThree);
+				break;
+		}
 		return o;
 	}
 
