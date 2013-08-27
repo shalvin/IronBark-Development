@@ -86,7 +86,6 @@ public class SellActivity extends Activity {
 		// Setup the layout and buttons
 		setContentView(R.layout.sell_layout);
 		Button sButton = (Button) findViewById(R.id.ButtonSellItem);
-		sButton.setBackgroundColor(Color.parseColor("#9c2e2e"));
 		
 		// Get the backend model
 		//MainApplication appState = (MainApplication)getApplicationContext();
