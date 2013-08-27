@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -29,9 +30,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.studentsaleapp.R;
@@ -86,6 +89,7 @@ public class SellActivity extends Activity {
 		// Setup the layout and buttons
 		setContentView(R.layout.sell_layout);
 		Button sButton = (Button) findViewById(R.id.ButtonSellItem);
+		//sButton.setBackgroundColor(Color.parseColor("#9c2e2e"));
 		
 		// Get the backend model
 		//MainApplication appState = (MainApplication)getApplicationContext();
@@ -253,14 +257,32 @@ public class SellActivity extends Activity {
 		final EditText descriptionTextField = (EditText) findViewById(R.id.descriptionTextField);  
 		final EditText phoneNumberTextField = (EditText) findViewById(R.id.phoneNumberTextField);  
 		final EditText locationTextField = (EditText) findViewById(R.id.locationTextField);  
-		final EditText priceTextField = (EditText) findViewById(R.id.priceTextField);  
+		final EditText priceTextField = (EditText) findViewById(R.id.priceTextField);
+        final TextView titleValidateField = (TextView) findViewById(R.id.titleValidateField);
+        final TextView descriptionValidateField = (TextView) findViewById(R.id.descriptionValidateField);
+        final TextView priceValidateField = (TextView) findViewById(R.id.priceValidateField);
 
 		// Extract the field text
 		String titleText = titleTextField.getText().toString();
 		String descriptionText = descriptionTextField.getText().toString();
 		String phoneNumberText = phoneNumberTextField.getText().toString();
 		String locationText = locationTextField.getText().toString();
-		double priceText = Double.parseDouble(priceTextField.getText().toString());
+		String priceText = priceTextField.getText().toString();
+
+        // Validate necessary fields
+        boolean validTitle = validateTitle(titleText, titleValidateField);
+        boolean validDescription = validateDescription(descriptionText, descriptionValidateField);
+        boolean validPrice = validatePrice(priceText, priceValidateField);
+        if (!(validTitle && validDescription && validPrice)) {
+            if (!validTitle) {
+                titleTextField.requestFocus();
+            } else if (!validDescription) {
+                descriptionTextField.requestFocus();
+            } else if (!validPrice) {
+                priceTextField.requestFocus();
+            }
+            return;
+        }
 
 		// Create the sale item and add the fields
 		SaleItem saleItem = new SaleItem();
@@ -270,7 +292,7 @@ public class SellActivity extends Activity {
 		saleItem.setContact(phoneNumberText);
         saleItem.setLocation(lastLocation.getLatitude(), lastLocation.getLongitude());
         saleItem.setLocationString(locationText);
-		saleItem.setPrice(priceText);
+		saleItem.setPrice(Double.parseDouble(priceText));
 		saleItem.setUserID(getDeviceID());
 		saleItem.setImages(mImageBitmaps);
 		
@@ -395,8 +417,37 @@ public class SellActivity extends Activity {
 		final EditText locationTextField = (EditText) findViewById(R.id.locationTextField);
 		locationTextField.setText(locationString);
 	}
-	
-	
+
+    private boolean validateTitle(String title, TextView field) {
+        title.replaceAll("[^a-zA-Z0-9()]", "");
+        if (title.length() <= 3 || title.length() > 90) {
+            field.setText("Please enter a title.");
+            return false;
+        }
+        field.setText("");
+        return true;
+    }
+
+    private boolean validateDescription(String description, TextView field) {
+        description.replaceAll("[^a-zA-Z0-9()]", "");
+        if (description.length() == 0) {
+            field.setText("Please enter a description.");
+            return false;
+        }
+        field.setText("");
+        return true;
+    }
+
+    private boolean validatePrice(String price, TextView field) {
+        price.replaceAll("[^0-9]", "");
+        if (price.length() == 0) {
+            field.setText("Please enter a price.");
+            return false;
+        }
+        field.setText("");
+        return true;
+    }
+
 	/**
 	 * The network provider location listener which is only called once
 	 */
