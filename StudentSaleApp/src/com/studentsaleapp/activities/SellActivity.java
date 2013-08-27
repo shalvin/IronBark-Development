@@ -257,6 +257,7 @@ public class SellActivity extends Activity {
 		final EditText priceTextField = (EditText) findViewById(R.id.priceTextField);
         final TextView titleValidateField = (TextView) findViewById(R.id.titleValidateField);
         final TextView descriptionValidateField = (TextView) findViewById(R.id.descriptionValidateField);
+        final TextView contactValidateField = (TextView) findViewById(R.id.contactValidateField);
         final TextView priceValidateField = (TextView) findViewById(R.id.priceValidateField);
 
 		// Extract the field text
@@ -270,13 +271,16 @@ public class SellActivity extends Activity {
         boolean validTitle = validateTitle(titleText, titleValidateField);
         boolean validDescription = validateDescription(descriptionText, descriptionValidateField);
         boolean validPrice = validatePrice(priceText, priceValidateField);
-        if (!(validTitle && validDescription && validPrice)) {
+        boolean validContact = validateContact(phoneNumberText, contactValidateField);
+        if (!(validTitle && validDescription && validPrice && validContact)) {
             if (!validTitle) {
                 titleTextField.requestFocus();
             } else if (!validDescription) {
                 descriptionTextField.requestFocus();
             } else if (!validPrice) {
                 priceTextField.requestFocus();
+            } else if (!validContact){
+                phoneNumberTextField.requestFocus();
             }
             return;
         }
@@ -439,6 +443,20 @@ public class SellActivity extends Activity {
         price.replaceAll("[^0-9]", "");
         if (price.length() == 0) {
             field.setText("Please enter a price.");
+            return false;
+        }
+        field.setText("");
+        return true;
+    }
+
+    private boolean validateContact(String contact, TextView field){
+        contact.replaceAll("[^0-9]", "");
+        if (contact.length() == 0) {
+            field.setText("Please enter a contact number.");
+            return false;
+        }
+        else if (contact.length() < 8 || contact.length() > 10){
+            field.setText("Please enter a valid contact number.");
             return false;
         }
         field.setText("");
