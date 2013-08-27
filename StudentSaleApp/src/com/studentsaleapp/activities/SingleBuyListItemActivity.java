@@ -2,17 +2,19 @@ package com.studentsaleapp.activities;
 
 import com.studentsaleapp.R;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
-
 public class SingleBuyListItemActivity extends Activity {
 	
 	/** The image integer */
@@ -50,7 +52,24 @@ public class SingleBuyListItemActivity extends Activity {
 
 		// Show the Up button in the action bar.
 		setupActionBar();
+
+        //Checks if the contact number is set.
+        if (contact == null || contact.equals("")){
+            findViewById(R.id.ImageButtonCallSeller).setClickable(false);
+            findViewById(R.id.ImageButtonCallSeller).setBackgroundColor(0xFFBFBFBF);
+        }else{
+            findViewById(R.id.ImageButtonCallSeller).setClickable(true);
+        }
 	}
+
+    /** Calls the users selling the currently selected items onClick */
+    public void callSellerButton(View Button){
+        Intent i = getIntent();
+        String contact = i.getStringExtra("contact").toString();
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:"+contact));
+        startActivity(callIntent);
+    }
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	private void setupActionBar() {

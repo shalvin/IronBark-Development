@@ -31,7 +31,8 @@
         android:layout_height="250dp"
         android:layout_gravity="center"
         android:src="@drawable/wii" 
-        android:contentDescription="@string/imageViewDescription"/>
+        android:contentDescription="@string/imageViewDescription"
+            />
 
     <!-- Item Description -->
     <TextView
@@ -56,5 +57,18 @@
         android:layout_height="wrap_content"
         android:padding="10dip"
         android:text="@string/notsetText" />
+
+    <ImageButton
+            android:layout_width="111dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ImageButtonCallSeller"
+            android:layout_gravity="left|center_vertical"
+            android:layout_margin="10dp"
+            android:clickable="false"
+            android:src="@drawable/img_btn_call_ssa"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/ab_solid_ssademo"
+            android:onClick="callSellerButton"/>
 
 </LinearLayout>
