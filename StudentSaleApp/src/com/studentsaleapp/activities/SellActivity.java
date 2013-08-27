@@ -272,7 +272,6 @@ public class SellActivity extends Activity {
         saleItem.setLocation(lastLocation.getLatitude(), lastLocation.getLongitude());
         saleItem.setLocationString(locationText);
 		saleItem.setPrice(priceText);
-        saleItem.setPhoneNumber(phoneNumberText);
 		saleItem.setUserID(getDeviceID());
 		saleItem.setImages(mImageBitmaps);
 		
@@ -370,7 +369,7 @@ public class SellActivity extends Activity {
 			Log.i(TAG, "setLocation Iteration: " + latitude + ", " + longitude);
 		} while (addresses.size() == 0);
 		
-		// Create the address string containing no null Strings
+		/*// Create the address string containing no null Strings
 		int lineCounter = 0;
 		String locationString = "";
 		String addressLine;
@@ -387,7 +386,11 @@ public class SellActivity extends Activity {
 			}
 			locationString += addressLine + ", ";
 		}
-		
+		*/
+
+        Address address = addresses.get(0);
+        String locationString = address.getLocality() + ", " + address.getAdminArea();
+
 		// Set the location in the text field
 		Log.i(TAG, "setLocation Address: " + locationString);
 		final EditText locationTextField = (EditText) findViewById(R.id.locationTextField);
