@@ -1,5 +1,6 @@
 package com.studentsaleapp.activities;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -126,12 +127,12 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
         int temp_counter = 0;
 		for (SaleItem item : temp_rowItems) {
             rowItems.add(new BuyRowItem(
-                    images[temp_counter],
+                    images[temp_counter % images.length],
                     item.getTitle(),
                     item.getDescription(),
                     formatPrice(item.getPrice()),
                     item.getContact(),
-                    location[temp_counter]
+                    location[temp_counter % location.length]
             ));
             temp_counter++;
         }
@@ -189,12 +190,8 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
 	}
 
     private String formatPrice(double price) {
-        StringBuffer formattedPrice = new StringBuffer(Double.toString(price));
-        formattedPrice.insert(0, '$');
-        if (formattedPrice.indexOf(".") < 0) {
-            formattedPrice.append(".00");
-        }
-
-        return formattedPrice.toString();
+        StringBuffer buffer = new StringBuffer(Double.toString(price));
+        buffer.insert(0, '$');
+        return buffer.toString();
     }
 }
