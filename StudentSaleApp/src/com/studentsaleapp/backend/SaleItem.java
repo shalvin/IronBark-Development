@@ -76,7 +76,7 @@ public class SaleItem {
 	}
 	
 	/**
-	 * @param set the item's images
+	 * @param mImageBitmaps the list of images associated with this SaleItem
 	 */
 	public void setImages(ArrayList<Bitmap> mImageBitmaps) {
 		this.mImageBitmaps = mImageBitmaps;

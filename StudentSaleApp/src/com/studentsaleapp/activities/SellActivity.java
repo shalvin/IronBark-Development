@@ -215,8 +215,10 @@ public class SellActivity extends Activity {
 						// Extract only the bitmap dimensions
 						String currentFile = mImagePaths.get(currentImage).toString();
 						BitmapFactory.Options bitmapFactoryOptions = new BitmapFactory.Options();
-						bitmapFactoryOptions.inJustDecodeBounds = true;
+						bitmapFactoryOptions.inJustDecodeBounds = false;
 						Bitmap currentBitmap = BitmapFactory.decodeFile(currentFile, bitmapFactoryOptions);
+                        // Add the bitmap to the array
+                        mImageBitmaps.add(currentBitmap);
 						
 						// Calculate the height and width ratios
 						int ratioHeight = (int) Math.ceil(bitmapFactoryOptions.outHeight / requiredHeight);
@@ -232,13 +234,8 @@ public class SellActivity extends Activity {
 						}
 						
 						// Extract the resized bitmap
-						bitmapFactoryOptions.inJustDecodeBounds = false;
 						currentBitmap = BitmapFactory.decodeFile(currentFile, bitmapFactoryOptions);
-						
-						// Add the bitmap to the array
-						mImageBitmaps.add(currentBitmap);
-						//mImageBitmaps.add(BitmapFactory.decodeFile(mImagePaths.get(currentImage).toString()));
-						
+
 						// Display the image in the image view
 						mImageViews.get(currentImage).setImageBitmap(currentBitmap);
 						
