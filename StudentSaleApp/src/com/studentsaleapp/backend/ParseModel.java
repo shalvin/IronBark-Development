@@ -166,7 +166,7 @@ public class ParseModel implements BackendModel {
 	 */
 	private ParseFile bitmapToParseFile(Bitmap b) {
 		ByteArrayOutputStream stream = new ByteArrayOutputStream(b.getWidth() * b.getHeight());
-		b.compress(CompressFormat.PNG, 100, stream);
+		b.compress(CompressFormat.JPEG, 25, stream);
 		ParseFile file = new ParseFile(stream.toByteArray());
 		return file;
 	}
