@@ -77,7 +77,9 @@ public class BuyListViewAdapter extends ArrayAdapter<BuyRowItem> {
 		// Assign values from BuyRowItem data values
 		holder.txtDesc.setText(rowItem.getDesc());
 		holder.txtTitle.setText(rowItem.getTitle());
-		holder.imageView.setImageResource(rowItem.getImageId());
+        if (rowItem.getImages().size() > 0) {
+		    holder.imageView.setImageBitmap(rowItem.getImages().get(0));
+        }
 		holder.txtPrice.setText(rowItem.getPrice());
 		holder.txtContact.setText(rowItem.getContact());
 		holder.txtLocation.setText(rowItem.getLocation());

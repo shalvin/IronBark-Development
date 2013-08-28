@@ -1,9 +1,12 @@
 package com.studentsaleapp.activities;
 
+import java.util.ArrayList;
+import android.graphics.Bitmap;
+
 public class BuyRowItem {
 	
 	/** The image identifier */
-	private int imageId;
+	private ArrayList<Bitmap> images;
 	
 	/** The title set */
 	private String title;
@@ -23,15 +26,16 @@ public class BuyRowItem {
 	/**
 	 * Constructor for BuyRowItem ArrayList
 	 * 
-	 * @param imageId - value of id for image identifier
+	 * @param images - value of id for image identifier
 	 * @param title - value and type for title set and display
 	 * @param desc - value and type for description set and display
 	 * @param price - value and type for price set and display
 	 * @param contact - value and type for contact set and display
 	 * @param location - value and type for location set and display
 	 */
-	public BuyRowItem(int imageId, String title, String desc, String price, String contact, String location) {
-		this.imageId = imageId;
+	public BuyRowItem(ArrayList<Bitmap> images, String title, String desc, String price,
+                      String contact, String location) {
+		this.images = images;
 		this.title = title;
 		this.desc = desc;
 		this.price = price;
@@ -39,12 +43,12 @@ public class BuyRowItem {
 		this.location = location;
 	}
 
-	public int getImageId() {
-		return imageId;
+	public ArrayList<Bitmap> getImages() {
+		return images;
 	}
 
-	public void setImageId(int imageId) {
-		this.imageId = imageId;
+	public void setImages(ArrayList<Bitmap> images) {
+		this.images = images;
 	}
 	
 	public String getDesc() {

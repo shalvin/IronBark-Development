@@ -33,7 +33,7 @@ public class ParseModel implements BackendModel {
 	 * List of objects retrieved from Parse.
 	 */
 	private List<ParseObject> retrievedObjects = new ArrayList<ParseObject>();
-	
+
 	/**
 	 * Create a new ParseModel, and make Parse available to all contexts
 	 * stemming from the given context.
@@ -197,6 +197,9 @@ public class ParseModel implements BackendModel {
 	 * @return the SaleItem created from the given ParseObject
 	 */
 	private SaleItem parseObjectToSaleItem(ParseObject p) {
+        ArrayList<Bitmap> images = new ArrayList<Bitmap>();
+        String[] imageKeys = {"imageOne", "imageTwo", "imageThree"};
+        ParseFile[] parseImage = new ParseFile[3];
 		SaleItem s = new SaleItem();
 		s.setTitle(p.getString("title"));
 		s.setDescription(p.getString("description"));
@@ -207,6 +210,14 @@ public class ParseModel implements BackendModel {
 		s.setPrice(p.getDouble("price"));
 		s.setUserID(p.getString("userid"));
 		s.setItemID(p.getObjectId());
+        // Convert parse files into bitmaps
+        for (int i = 0; i < 3; i++) {
+            parseImage[i] = p.getParseFile(imageKeys[i]);
+            if (parseImage[i].isDataAvailable()) {
+                images.set(i, parseFileToBitmap(parseImage[i]));
+            }
+        }
+        s.setImages(images);
 		return s;
 	}
 

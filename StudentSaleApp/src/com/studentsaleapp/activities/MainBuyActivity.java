@@ -122,12 +122,12 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
 
 		// Populate the row items
 		rowItems = new ArrayList<BuyRowItem>();
-        ArrayList<SaleItem> temp_rowItems = model.getItemList();
+        ArrayList<SaleItem> fetchedRowItems = model.getItemList();
         // Temporary counter to go through static data as images & locations not yet in database.
         int temp_counter = 0;
-		for (SaleItem item : temp_rowItems) {
+		for (SaleItem item : fetchedRowItems) {
             rowItems.add(new BuyRowItem(
-                    images[temp_counter % images.length],
+                    item.getImages(),
                     item.getTitle(),
                     item.getDescription(),
                     formatPrice(item.getPrice()),
