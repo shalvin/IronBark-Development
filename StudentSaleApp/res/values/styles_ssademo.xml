@@ -29,17 +29,18 @@
         <item name="android:actionModeBackground">@drawable/cab_background_top_ssademo</item>
         <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_ssademo</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Ssademo</item>
-        
+        <item name="android:actionMenuTextColor">@color/actionbar_text</item>
                 <!-- Light.DarkActionBar specific -->
         <item name="android:actionBarWidgetTheme">@style/Theme.Ssademo.Widget</item>
 
     </style>
 
     <style name="ActionBar.Solid.Ssademo" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@drawable/ab_solid_ssademo</item>
+        <item name="android:background">@drawable/ab_solid_ssa</item>
         <item name="android:backgroundStacked">@drawable/ab_stacked_solid_ssademo</item>
         <item name="android:backgroundSplit">@drawable/ab_bottom_solid_ssademo</item>
         <item name="android:progressBarStyle">@style/ProgressBar.Ssademo</item>
+        <item name="android:textColor">@color/actionbar_text</item>
     </style>
 
     <style name="ActionBar.Transparent.Ssademo" parent="@android:style/Widget.Holo.ActionBar">

@@ -211,12 +211,14 @@ public class ParseModel implements BackendModel {
 		s.setUserID(p.getString("userid"));
 		s.setItemID(p.getObjectId());
         // Convert parse files into bitmaps
+        /**
         for (int i = 0; i < 3; i++) {
             parseImage[i] = p.getParseFile(imageKeys[i]);
             if (parseImage[i].isDataAvailable()) {
                 images.set(i, parseFileToBitmap(parseImage[i]));
             }
         }
+         */
         s.setImages(images);
 		return s;
 	}

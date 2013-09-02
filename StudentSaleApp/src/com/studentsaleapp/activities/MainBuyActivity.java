@@ -7,16 +7,19 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import com.studentsaleapp.R;
 import com.studentsaleapp.backend.BackendModel;
@@ -115,7 +118,14 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
 		
 		// Setup the layout
 		setContentView(R.layout.buy_layout);
-		
+
+        // Get the intent, verify the action and get the query
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            doMySearch(query);
+        }
+
 		// Get the backend model
 		MainApplication appState = (MainApplication)getApplicationContext();
 		model = appState.getBackendModel();
@@ -171,9 +181,12 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		new MenuInflater(this).inflate(R.menu.buy_options_menu, menu);
-		return super.onCreateOptionsMenu(menu);
-	} 
+        getMenuInflater().inflate(R.menu.buy_options_menu, menu);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        return true;
+    }
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -194,4 +207,10 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
         buffer.insert(0, '$');
         return buffer.toString();
     }
+
+    private void doMySearch(String query){
+        Log.e("myApp", query);
+    }
+
 }
+

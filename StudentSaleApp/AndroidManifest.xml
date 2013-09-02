@@ -6,8 +6,8 @@
  
     <!-- SDK Versions -->
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="11" />
     
     <!-- Permissions -->
     <uses-feature android:name="android.hardware.camera" />
@@ -33,7 +33,10 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+                <meta-data android:name="android.app.searchable"
+                           android:resource="@xml/searchable" />
         </activity>
         
         <!-- Sell Activity -->

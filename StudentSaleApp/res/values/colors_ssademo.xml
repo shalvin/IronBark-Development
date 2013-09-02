@@ -19,4 +19,5 @@
 
 <resources>
     <color name="pressed_ssademo">#CC0D232B</color>
+    <color name="actionbar_text">#669900</color>
 </resources>

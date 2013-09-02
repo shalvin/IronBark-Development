@@ -6,8 +6,12 @@
     
     <!-- Options Menu Bar -->
     <string name="buy_option_text">Buy</string>
-    <string name="sell_option_text">Sell</string>
+    <string name="sell_option_text">Sell Items</string>
     <string name="search_option_text">Search</string>
+    <string name="review_option_text">Review Your Listings</string>
+    <string name="refine_option_text">Refine Search</string>
+    <string name="settings_option_text">Settings</string>
+    <string name="search_hint">Search Keyword</string>
     
 	<!-- Buy Activity -->
     <string name="emptyList">No Data</string>
