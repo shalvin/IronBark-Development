@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -153,6 +154,7 @@ public class MainBuyActivity extends Activity implements OnItemClickListener {
 				R.layout.single_buy_row_layout, rowItems);
 		adapterListView.setAdapter(adapter);
 		adapterListView.setOnItemClickListener(this);
+
 	}
 
 	/**
